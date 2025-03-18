@@ -8,6 +8,7 @@ async function connect() {
 
   // ✅ Ensure the queue exists before consuming
   await channel.assertQueue('USER_REGISTERED', { durable: true });
+  await channel.assertQueue('UPDATE_USER_ID', { durable: true });
 
   console.log('✅ Connected to RabbitMQ - USER_REGISTERED queue asserted');
 

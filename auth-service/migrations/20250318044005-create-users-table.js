@@ -10,6 +10,16 @@ module.exports = {
         primaryKey: true,
         allowNull: false,
       },
+      ipAddress: {
+        type: Sequelize.STRING(50),
+        allowNull: false,
+        unique: true,
+      },
+      role: {
+        type: Sequelize.ENUM('admin', 'user'),
+        allowNull: false,
+        defaultValue: 'user',
+      },
       username: {
         type: Sequelize.STRING,
         allowNull: false,

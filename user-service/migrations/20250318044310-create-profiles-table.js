@@ -9,15 +9,10 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
-      role_id: {
+      userId: {
         type: Sequelize.INTEGER,
-        defaultValue: 2,
-        references: {
-          model: 'roles', // Pastikan ini sesuai dengan nama tabel roles
-          key: 'id',
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
+        unique: true,
+        allowNull: true,
       },
       username: {
         type: Sequelize.STRING,
@@ -25,7 +20,7 @@ module.exports = {
         unique: true,
       },
       gender: {
-        type: Sequelize.ENUM('Male', 'Female'),
+        type: Sequelize.ENUM('male', 'female'),
       },
       image: {
         type: Sequelize.STRING,
@@ -35,7 +30,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      ip_address: {
+      ipAddress: {
         type: Sequelize.STRING(50),
         allowNull: false,
         unique: true,

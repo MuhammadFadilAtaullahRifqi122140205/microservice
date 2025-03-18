@@ -5,6 +5,7 @@ const authMiddleware = require('../middlewares/authMiddleware');
 const router = express.Router();
 
 router.get('/', authMiddleware, productController.getAllProducts);
+router.get('/me', authMiddleware, productController.getAllMyProducts);
 router.get('/:productId', authMiddleware, productController.getProductById);
 router.post('/create', authMiddleware, productController.createProduct);
 router.patch(

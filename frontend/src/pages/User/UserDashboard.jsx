@@ -1,24 +1,21 @@
-import { Link } from 'react-router-dom';
+import Layout from './components/Layout';
 
 function UserDashboard() {
   return (
-    <div>
-      <h2>User Dashboard</h2>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/user/profile">Profile</Link>
-          </li>
-          <li>
-            <Link to="/user/products">Products</Link>
-          </li>
-          <li>
-            <Link to="/user/my-products">My Products</Link>
-          </li>
-        </ul>
-      </nav>
-      <div>{/* Add routes for Profile, Products, and My Products here */}</div>
-    </div>
+    <Layout>
+      <h1 className="text-2xl font-bold text-gray-800">
+        Welcome to your Dashboard
+      </h1>
+      <p className="mt-2 text-gray-600">
+        Use the navigation menu to access your profile, products, or manage your
+        own products.
+      </p>
+      <div className="mt-4">
+        <p className="text-gray-500">
+          Content will appear here based on the selected menu.
+        </p>
+      </div>
+    </Layout>
   );
 }
 

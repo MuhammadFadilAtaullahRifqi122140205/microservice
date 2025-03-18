@@ -1,4 +1,5 @@
 const Product = require('../models/Product');
+const { Op } = require('sequelize');
 
 exports.createProduct = async (req, res) => {
   try {
@@ -29,7 +30,25 @@ exports.createProduct = async (req, res) => {
 
 exports.getAllProducts = async (req, res) => {
   try {
-    const products = await Product.findAll();
+    const userId = req.user.userId; // Get the current user's ID
+    const products = await Product.findAll({
+      where: {
+        userId: {
+          [Op.ne]: userId, // Exclude products where userId matches the current user's ID
+        },
+      },
+    });
+    return res.json({ products });
+  } catch (error) {
+    console.error('Error getting products:', error);
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+exports.getAllMyProducts = async (req, res) => {
+  try {
+    const userId = req.user.userId;
+    const products = await Product.findAll({ where: { userId } });
     return res.json({ products });
   } catch (error) {
     console.error('Error getting products:', error);
